@@ -1,0 +1,21 @@
+# serverless.yml
+
+service: VaccinationClinic-API
+
+frameworkVersion: '3'
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+
+functions:
+  hello:
+    handler: app.server
+    events: # events trigger lambda functions
+      - http: # this is an API Gateway HTTP event trigger
+          path: /availvaccines
+          method: get
+          cors: true
